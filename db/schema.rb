@@ -23,13 +23,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_013515) do
     t.index ["gender"], name: "index_audiences_on_gender"
     t.index ["maximum_age"], name: "index_audiences_on_maximum_age"
     t.index ["minimum_age"], name: "index_audiences_on_minimum_age"
-    t.check_constraint "gender IS NULL OR (gender::text = ANY (ARRAY['Male'::character varying, 'Female'::character varying]::text[]))"
+    t.check_constraint "gender::text = ANY (ARRAY['Male'::character varying, 'Female'::character varying, 'All'::character varying]::text[])"
     t.check_constraint "minimum_age IS NULL OR maximum_age IS NULL OR minimum_age <= maximum_age"
   end
 
   create_table "offers", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "audience_id", null: false

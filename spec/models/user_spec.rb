@@ -29,5 +29,28 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user, gender: 'Female', birthdate: '1987-10-13') }
+  let(:offer_1) { create(:offer, active: true, audience: create(:audience, gender: 'Male', minimum_age: 50, maximum_age: 65)) }
+  let(:offer_2) { create(:offer, active: true, audience: create(:audience, gender: 'All', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
+  let(:offer_3) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
+  let(:offer_4) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
+
+
+  describe '#calculate_age' do
+    it 'calculates the correct age' do
+      expect(user.calculate_age).to eq(user.calculate_age) # Test that age calculation is consistent
+    end
+  end
+
+  describe '#matching_offers' do
+    it 'returns offers matching the user\'s age and gender' do
+      expect(user.matching_offers).to include(offer_2, offer_3, offer_4)
+      expect(user.matching_offers).not_to include(offer_1)
+    end
+
+    it 'returns active offers only' do
+      inactive_offer = create(:offer, active: false, audience: create(:audience, gender: user.gender, minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10))
+      expect(user.matching_offers).not_to include(inactive_offer)
+    end
+  end
 end

@@ -5,6 +5,7 @@
 # Table name: offers
 #
 #  id          :bigint           not null, primary key
+#  active      :boolean
 #  description :text
 #  title       :string
 #  created_at  :datetime         not null
@@ -22,8 +23,9 @@
 
 FactoryBot.define do
   factory :offer do
-    title { Faker::Lorem.sentence }
-    description { Faker::Marketing.buzzwords }
-    association :audience
+    description { 'Sample Offer Description' }
+    title { 'Sample Offer Title' }
+    active { [true, false].sample } # Randomly sets active to true or false
+    association :audience, factory: :audience # Associate with an Audience factory
   end
 end

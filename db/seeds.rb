@@ -17,6 +17,16 @@ audiences = [
   Offer.create(
     title: Faker::ProgrammingLanguage.name,
     description: Faker::Marketing.buzzwords,
-    audience: audiences.sample  # Randomly pick one of the audiences
+    audience: audiences.sample,  # Randomly pick one of the audiences
+    active: true
+  )
+end
+
+100.times do
+  Offer.create(
+    title: Faker::ProgrammingLanguage.name,
+    description: Faker::Marketing.buzzwords,
+    audience: audiences.sample,  # Randomly pick one of the audiences
+    active: false
   )
 end

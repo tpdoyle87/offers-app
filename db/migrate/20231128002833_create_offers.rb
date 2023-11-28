@@ -5,6 +5,7 @@ class CreateOffers < ActiveRecord::Migration[7.1]
     create_table :offers do |t|
       t.string :title
       t.text :description
+      t.boolean :active
 
       t.timestamps
     end

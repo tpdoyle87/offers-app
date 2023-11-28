@@ -32,7 +32,7 @@ FactoryBot.define do
     sequence(:last_name) { |n| "UserLastName#{n}" }
     sequence(:username) { |n| "username#{n}" }
     email { Faker::Internet.email }
-    encrypted_password { Devise::Encryptor.digest(User, 'password123') }
+    password { 'password123' } # Allow users without passwords
     birthdate { Faker::Date.birthday }
     gender { %w[Male Female All].sample }
   end

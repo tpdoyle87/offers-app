@@ -43,7 +43,12 @@ class User < ApplicationRecord
 
   def matching_offers
     age = calculate_age
-    Offer.joins(:audience)
-      .where('audiences.minimum_age <= ? AND audiences.maximum_age >= ? AND audiences.gender = ?', age, age, gender).distinct
+    specific_gender_query = Offer.joins(:audience)
+      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender: })
+    all_gender_query = Offer.joins(:audience)
+      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender: 'All' })
+    all_gender_query.or(specific_gender_query)
+      .where(active: true)
+      .distinct
   end
 end
