@@ -22,5 +22,6 @@
 #
 class Offer < ApplicationRecord
   validates :description, presence: true
+  validates :active, inclusion: {in: [true, false]}
   belongs_to :audience
 end

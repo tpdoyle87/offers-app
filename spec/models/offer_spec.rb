@@ -20,18 +20,55 @@
 #
 #  fk_rails_...  (audience_id => audiences.id)
 #
+# spec/models/offer_spec.rb
+
 require 'rails_helper'
 
-RSpec.describe Offer do
-  fixtures :offers, :audiences
-  it 'has a description' do
-    offer = offers(:offer_two)
-    expect(offer.description).to eq('A special deal just for you!')
+RSpec.describe Offer, type: :model do
+  let(:offer) { create(:offer, active: true) }
+
+  it 'is valid with valid attributes' do
+    expect(offer).to be_valid
+  end
+
+  it 'is not valid without a description' do
+    offer.description = nil
+    expect(offer).not_to be_valid
   end
 
   it 'belongs to an audience' do
-    offer = offers(:offer_one)
+    expect(offer).to belong_to(:audience)
+  end
 
-    expect(offer.audience).to eq(audiences(:audience_one))
+  it 'can be active' do
+    offer.active = true
+    expect(offer).to be_valid
+  end
+
+  it 'can be inactive' do
+    offer.active = false
+    expect(offer).to be_valid
+  end
+
+  it 'can have a title' do
+    offer.title = 'Custom Title'
+    expect(offer).to be_valid
+  end
+
+  it 'has a description' do
+    expect(offer.description).to eq('Sample Offer Description')
+  end
+
+  it 'has an active status' do
+    expect(offer.active).to be_in([true, false])
+  end
+
+  it 'has an associated audience' do
+    expect(offer.audience).to be_instance_of(Audience)
+  end
+
+  it 'is not valid without an active status' do
+    offer.active = nil
+    expect(offer).not_to be_valid
   end
 end
