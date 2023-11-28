@@ -10,14 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    offers_path  # Assuming you have an offers route set up
+    offers_path
   end
 
   def after_sign_up_path_for(_resource)
-    offers_path  # Redirection path after signup
+    offers_path
   end
 
   def after_sign_out_path_for(_resource_or_scope)
-    home_index_path  # Redirection path after signout
+    home_index_path
   end
 end

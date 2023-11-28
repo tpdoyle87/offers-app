@@ -32,7 +32,7 @@ FactoryBot.define do
     sequence(:last_name) { |n| "UserLastName#{n}" }
     sequence(:username) { |n| "username#{n}" }
     email { Faker::Internet.email }
-    password { 'password123' } # Allow users without passwords
+    password { 'password123' }
     birthdate { Faker::Date.birthday }
     gender { %w[Male Female All].sample }
   end
