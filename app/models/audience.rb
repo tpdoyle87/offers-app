@@ -22,7 +22,7 @@ class Audience < ApplicationRecord
 
   validates :gender, inclusion: { in: %w(Male Female All) }, allow_blank: false
   validate :maximum_age_validation
-  validate :minimum_age_validatioin
+  validate :minimum_age_validation
 
   private
 
@@ -33,7 +33,7 @@ class Audience < ApplicationRecord
     errors.add(:maximum_age, "must be greater than the minimum age")
   end
 
-  def minimum_age_validatioin
+  def minimum_age_validation
     return if minimum_age.blank? || maximum_age.blank?
     return if minimum_age < maximum_age
 
