@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: offers
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  audience_id :bigint           not null
+#
+# Indexes
+#
+#  index_offers_on_audience_id  (audience_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (audience_id => audiences.id)
+#
 offer_one:
   audience: audience_one
   description: 'A great offer for those in their 20s!'

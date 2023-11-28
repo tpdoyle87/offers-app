@@ -1,4 +1,73 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<!-- app/views/home/index.html.erb -->
+
+<div class="container mx-auto bg-blue-100 py-10 px-4">
+  <!-- Homepage Headline -->
+  <h1 class="text-4xl font-bold text-center mb-6">Discover Exclusive Special Offers from Top Retailers!</h1>
+
+  <!-- Introductory Paragraph -->
+  <p class="text-lg text-center text-gray-600">
+    Welcome to <span class="text-blue-500">Offer</span>, your go-to destination for incredible deals and exclusive offers from a wide range of top retailers. Whether you're looking for discounts on fashion, electronics, home essentials, or more, you'll find the best deals right here. Explore our curated selection of special offers and start saving today!
+  </p>
+
+  <!-- Featured Retailers -->
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Retailer 1 -->
+    <div class="p-4 border border-gray-300 rounded-lg">
+      <h2 class="text-xl font-semibold mb-2">Amazon</h2>
+      <p class="text-gray-600">Enjoy up to 50% off on the latest fashion trends.</p>
+    </div>
+
+    <!-- Retailer 2 -->
+    <div class="p-4 border border-gray-300 rounded-lg">
+      <h2 class="text-xl font-semibold mb-2">Best Buy</h2>
+      <p class="text-gray-600">Get amazing deals on high-quality electronics and gadgets.</p>
+    </div>
+
+    <!-- Retailer 3 -->
+    <div class="p-4 border border-gray-300 rounded-lg">
+      <h2 class="text-xl font-semibold mb-2">Big lots</h2>
+      <p class="text-gray-600">Upgrade your home with discounted furniture and decor.</p>
+    </div>
+
+    <!-- Retailer 4 -->
+    <div class="p-4 border border-gray-300 rounded-lg">
+      <h2 class="text-xl font-semibold mb-2">Ulta</h2>
+      <p class="text-gray-600">Find great discounts on beauty and skincare products.</p>
+    </div>
+
+    <!-- Retailer 5 -->
+    <div class="p-4 border border-gray-300 rounded-lg">
+      <h2 class="text-xl font-semibold mb-2">Sports Authority</h2>
+      <p class="text-gray-600">Save big on sports and outdoor gear.</p>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="text-center mt-10">
+    <span class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full inline-block shadow-sm"><%= link_to "Sign Up for Free", new_user_registration_path, data: { turbo_method: :get } %></span>
+  </div>
+</div>
+
+<!-- Why Choose Us -->
+<div class="container mx-auto bg-orange-100 py-10 px-4">
+  <div class="max-w-screen-lg mx-auto text-center">
+    <h2 class="text-2xl font-semibold mb-6">Why Choose <span class="text-blue-500">offers.com</span> for Special Offers?</h2>
+    <ul class="text-lg text-gray-600">
+      <li class="mb-4">
+        <span class="text-green-500 mr-2">&#10003;</span> Vast Selection: We bring together deals from a variety of retailers, giving you choices galore.
+      </li>
+      <li class="mb-4">
+        <span class="text-green-500 mr-2">&#10003;</span> Exclusive Discounts: Enjoy special promotions that you won't find anywhere else.
+      </li>
+      <li class="mb-4">
+        <span class="text-green-500 mr-2">&#10003;</span> User-Friendly Experience: Our website is designed for easy navigation and a seamless shopping experience.
+      </li>
+      <li class="mb-4">
+        <span class="text-green-500 mr-2">&#10003;</span> Timely Updates: We regularly update our offers to ensure you're always in the know about the latest discounts.
+      </li>
+      <li>
+        <span class="text-green-500 mr-2">&#10003;</span> Save Time and Money: Discover deals on products you love, all in one place.
+      </li>
+    </ul>
+  </div>
 </div>

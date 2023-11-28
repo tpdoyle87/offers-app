@@ -1,18 +1,22 @@
 <!-- app/views/offers/index.html.erb -->
-
-<div class="container mx-auto p-5"> <!-- Container with margin auto and padding -->
-  <h1 class="text-2xl font-bold mb-4">Offers</h1> <!-- Heading style -->
+<div class="container mx-auto p-5">
+  <h1 class="text-2xl font-bold mb-4">Total Offers: <%= @offers.count %></h1>
 
   <% if @offers.empty? %>
     <p>No offers available.</p>
   <% else %>
-    <div class="grid grid-cols-1 gap-4"> <!-- Grid layout for cards -->
+    <div class="grid grid-cols-3 gap-4">
       <% @offers.each do |offer| %>
-        <div class="border border-gray-300 rounded-lg p-4" style="height: 20px;"> <!-- Card style -->
-          <p class="text-sm text-gray-600"><%= offer.description %></p> <!-- Description -->
-          <!-- Add other offer details you want to display -->
+        <div class="bg-white shadow-md rounded-lg p-4 mb-4 text-center">
+          <div class="text-sm text-gray-600">
+            <%= link_to offer.title, "#", class: "text-blue-500 hover:underline" %>
+          </div>
+          <div class="text-sm text-gray-600 mt-2">
+            <%= offer.description %>
+          </div>
         </div>
       <% end %>
+
     </div>
   <% end %>
 </div>
