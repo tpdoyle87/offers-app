@@ -18,10 +18,10 @@ I have a love-hate relationship with take-home tests. It's nice not having someo
     - The app could be dockerized to simplify setup, making it as easy as running a single command. For those without a local Rails setup, a simple script is available: `/bin/bash -c "$(curl -fsSL https://rails.new/✨)"`. This script guides through the entire setup process in just a few minutes.
 
 - **Dynamic Offer Compilation**:
-    - Instead of directly tying offers to users, offers are compiled on the fly when a user logs in and accesses the offers page. For the current use case, directly linking offers to users seemed like overkill. However, as the user base and number of active offers grow, it might make sense to establish a many-to-many relationship between users and offers, with a join table precompiled with users' offers. This could be managed through a cron job in Sidekiq.
+    - Instead of directly tying offers to users, offers are compiled on the fly when a user logs in and accesses the offers page. For the current use case, directly linking offers to users seemed like overkill. However, as the user base and number of active offers grow, it might make sense to establish a many-to-many relationship between users and offers, with a join table precompiled with users' offers. This could be managed through a cron job.
 
 - **Deactivating Offers**:
-    - Offers could be designed to expire after a certain period. A scheduled job could be implemented to automatically deactivate these offers.
+    - Offers could be designed to expire after a certain period. A chron job could be implemented to automatically deactivate these offers. This could mean the offers are expired for a little while before being deactivated if this job isn't pretty frequently.
 
 - **Separation of Audience Data from Offers**:
     - Audience data is kept separate from the offers. This separation allows for future expansion of complex audience data without altering the offer table. It also enables users who create offers to save audience data, similar to how Facebook Ads saves ad sets and audiences. Enforcing this practice might be beneficial.
