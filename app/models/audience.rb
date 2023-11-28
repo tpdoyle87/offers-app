@@ -20,7 +20,7 @@
 class Audience < ApplicationRecord
   has_many :offers, dependent: :nullify
 
-  validates :gender, inclusion: { in: %w[Male Female All] }, allow_blank: false
+  validates :gender, inclusion: { in: %w[Male Female] }, allow_blank: true
   validate :maximum_age_validation
   validate :minimum_age_validation
 

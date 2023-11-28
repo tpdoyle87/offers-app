@@ -8,9 +8,6 @@
     <div class="grid grid-cols-3 gap-4">
       <% @offers.each do |offer| %>
         <div class="bg-white shadow-md rounded-lg p-4 mb-4 text-center">
-          <div class="text-sm text-gray-600">
-            <%= link_to offer.title, "#", class: "text-blue-500 hover:underline" %>
-          </div>
           <div class="text-sm text-gray-600 mt-2">
             <%= offer.description %>
           </div>

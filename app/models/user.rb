@@ -32,7 +32,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
-  validates :first_name, :last_name, :birthdate, :gender, :username, :email, presence: true
+  validates :first_name, :last_name, :birthdate, :username, :email, presence: true
   validates :username, uniqueness: true
 
   def calculate_age
@@ -43,12 +43,25 @@ class User < ApplicationRecord
   end
 
   def matching_offers
-    age = calculate_age
-    specific_gender_query = Offer.joins(:audience)
-      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender: })
-    all_gender_query = Offer.joins(:audience)
-      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender: 'All' })
-    all_gender_query.or(specific_gender_query)
+    if gender.present?
+      gender_present_query(calculate_age)
+    else
+      no_gender_query(calculate_age)
+    end
+  end
+
+  private
+
+  def no_gender_query(age)
+    Offer.joins(:audience)
+      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY })
+      .where(active: true)
+      .distinct
+  end
+
+  def gender_present_query(age)
+    Offer.joins(:audience)
+      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender:})
       .where(active: true)
       .distinct
   end

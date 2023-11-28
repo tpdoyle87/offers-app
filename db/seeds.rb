@@ -9,7 +9,7 @@ audiences = [
   Audience.create(minimum_age: 35, maximum_age: 44, gender: 'Female'),
   Audience.create(minimum_age: 45, maximum_age: 54, gender: 'Male'),
   Audience.create(minimum_age: 55, maximum_age: 64, gender: 'Female'),
-  Audience.create(minimum_age: 35, maximum_age: 44, gender: 'All')
+  Audience.create(minimum_age: 35, maximum_age: 44, gender: '' )
 ]
 
 # Create 100 offers, each associated with one of the audiences

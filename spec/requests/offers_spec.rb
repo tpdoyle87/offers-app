@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Offers' do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, gender: nil) }
 
   context 'when user is authenticated' do
     before do
       sign_in user
       10.times do
-        create(:offer, active: true, audience: create(:audience, gender: 'All', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10))
+        create(:offer, active: true, audience: create(:audience, gender: nil, minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10))
       end
     end
 
