@@ -22,7 +22,7 @@
 
       <div class="field mx-3 flex flex-col rounded-md">
         <%= f.label :gender %>
-        <%= f.select :gender, options_for_select(['Male', 'Female', 'All']) %>
+        <%= f.select :gender, options_for_select(%w[Male Female All]) %>
       </div>
 
       <div class="field mx-3 flex flex-col rounded-md">

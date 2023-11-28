@@ -24,7 +24,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Offer, type: :model do
+RSpec.describe Offer do
   let(:offer) { create(:offer, active: true) }
 
   it 'is valid with valid attributes' do

@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   root "home#index"
-  resources :offers, only: %i[index show]
+  get '/offers', to: 'offers#index'
 
   get 'home/index'
   devise_for :users

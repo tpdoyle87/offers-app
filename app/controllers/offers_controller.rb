@@ -6,8 +6,4 @@ class OffersController < ApplicationController
   def index
     @offers = current_user.matching_offers
   end
-
-  def show
-    @offer = Offer.find(params[:id])
-  end
 end
