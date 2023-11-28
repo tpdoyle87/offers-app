@@ -19,8 +19,8 @@
 #
 FactoryBot.define do
   factory :audience do
-    minimum_age { 1 }
-    maximum_age { 1 }
-    gender { 'MyString' }
+    gender { %w[Male Female All].sample }
+    minimum_age { Faker::Number.between(from: 18, to: 45) }
+    maximum_age { Faker::Number.between(from: 46, to: 75) }
   end
 end

@@ -19,4 +19,7 @@
 #
 class Audience < ApplicationRecord
   has_many :offers
+
+  validates :gender, inclusion: { in: %w(Male Female All) }, allow_blank: false
+
 end

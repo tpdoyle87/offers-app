@@ -19,8 +19,11 @@
 #
 #  fk_rails_...  (audience_id => audiences.id)
 #
+
 FactoryBot.define do
   factory :offer do
-    description { 'MyText' }
+    title { Faker::Lorem.sentence }
+    description { Faker::Marketing.buzzwords }
+    association :audience
   end
 end
