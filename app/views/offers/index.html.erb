@@ -1,0 +1,18 @@
+<!-- app/views/offers/index.html.erb -->
+
+<div class="container mx-auto p-5"> <!-- Container with margin auto and padding -->
+  <h1 class="text-2xl font-bold mb-4">Offers</h1> <!-- Heading style -->
+
+  <% if @offers.empty? %>
+    <p>No offers available.</p>
+  <% else %>
+    <div class="grid grid-cols-1 gap-4"> <!-- Grid layout for cards -->
+      <% @offers.each do |offer| %>
+        <div class="border border-gray-300 rounded-lg p-4" style="height: 20px;"> <!-- Card style -->
+          <p class="text-sm text-gray-600"><%= offer.description %></p> <!-- Description -->
+          <!-- Add other offer details you want to display -->
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

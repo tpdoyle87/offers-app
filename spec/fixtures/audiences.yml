@@ -1,0 +1,9 @@
+audience_one:
+  minimum_age: 50
+  maximum_age: nil
+  gender: 'female'
+
+audience_two:
+  minimum_age: 30
+  maximum_age: 65
+  gender: 'male'
