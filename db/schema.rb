@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_013515) do
     t.date "birthdate"
     t.string "gender"
     t.index ["birthdate"], name: "index_users_on_birthdate"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email"
     t.index ["gender"], name: "index_users_on_gender"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
