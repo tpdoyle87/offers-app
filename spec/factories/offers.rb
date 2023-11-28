@@ -26,6 +26,6 @@ FactoryBot.define do
     description { 'Sample Offer Description' }
     title { 'Sample Offer Title' }
     active { [true, false].sample } # Randomly sets active to true or false
-    association :audience, factory: :audience # Associate with an Audience factory
+    audience factory: %i[audience] # Associate with an Audience factory
   end
 end

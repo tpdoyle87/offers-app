@@ -30,22 +30,26 @@ require 'rails_helper'
 
 RSpec.describe User do
   let(:user) { create(:user, gender: 'Female', birthdate: '1987-10-13') }
-  let(:offer_1) { create(:offer, active: true, audience: create(:audience, gender: 'Male', minimum_age: 50, maximum_age: 65)) }
-  let(:offer_2) { create(:offer, active: true, audience: create(:audience, gender: 'All', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
-  let(:offer_3) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
-  let(:offer_4) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
-
+  let(:offer_one) { create(:offer, active: true, audience: create(:audience, gender: 'Male', minimum_age: 50, maximum_age: 65)) }
+  let(:offer_two) { create(:offer, active: true, audience: create(:audience, gender: 'All', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
+  let(:offer_three) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
+  let(:offer_four) { create(:offer, active: true, audience: create(:audience, gender: 'Female', minimum_age: user.calculate_age, maximum_age: user.calculate_age + 10)) }
 
   describe '#calculate_age' do
     it 'calculates the correct age' do
-      expect(user.calculate_age).to eq(user.calculate_age) # Test that age calculation is consistent
+      expected_min_age = 35
+      expected_max_age = 45
+      expect(user.calculate_age).to be_between(expected_min_age, expected_max_age).inclusive
     end
   end
 
   describe '#matching_offers' do
     it 'returns offers matching the user\'s age and gender' do
-      expect(user.matching_offers).to include(offer_2, offer_3, offer_4)
-      expect(user.matching_offers).not_to include(offer_1)
+      expect(user.matching_offers).to include(offer_two, offer_three, offer_four)
+    end
+
+    it 'does not return non matching offers' do
+      expect(user.matching_offers).not_to include(offer_one)
     end
 
     it 'returns active offers only' do

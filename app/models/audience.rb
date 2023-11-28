@@ -18,7 +18,7 @@
 #  index_audiences_on_minimum_age  (minimum_age)
 #
 class Audience < ApplicationRecord
-  has_many :offers
+  has_many :offers, dependent: :nullify
 
   validates :gender, inclusion: { in: %w[Male Female All] }, allow_blank: false
   validate :maximum_age_validation

@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Offers', type: :request do
+RSpec.describe 'Offers' do
   let(:user) { create(:user) }
 
-  context 'When user is authenticated' do
+  context 'when user is authenticated' do
     before do
       sign_in user
       10.times do
@@ -14,7 +14,6 @@ RSpec.describe 'Offers', type: :request do
     end
 
     describe 'GET /index' do
-
       it 'returns http success when user is authenticated' do
         get '/offers'
         expect(response).to have_http_status(:success)

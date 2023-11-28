@@ -51,6 +51,6 @@ RSpec.describe Audience do
   end
 
   describe 'associations' do
-    it { should have_many(:offers) }
+    it { is_expected.to have_many(:offers) }
   end
 end
