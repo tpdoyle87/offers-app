@@ -8,6 +8,7 @@ import SignInForm from './pages/SignInForm';
 import OfferCards from './pages/Offers/Offers';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import NavBar from "./components/navbar/NavBar.jsx";
 
 
 function Offers() {
@@ -40,6 +41,7 @@ function App() {
             <ToastContainer />
             <QueryClientProvider client={queryClient}>
                 <Router>
+                    <NavBar />
                     <Routes>
                         <Route path="/offers" element={<OfferCards />} />
                         <Route path="/" element={<SignInForm />} />

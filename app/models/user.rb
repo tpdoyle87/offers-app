@@ -59,14 +59,14 @@ class User < ApplicationRecord
 
   def no_gender_query(age)
     Offer.joins(:audience)
-      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY })
+      .where(audiences: { minimum_age: 0..age, maximum_age: age..135 })
       .where(active: true)
       .distinct
   end
 
   def gender_present_query(age)
     Offer.joins(:audience)
-      .where(audiences: { minimum_age: -Float::INFINITY..age, maximum_age: age..Float::INFINITY, gender:})
+      .where(audiences: { minimum_age: 0..age, maximum_age: age..135, gender:})
       .where(active: true)
       .distinct
   end
