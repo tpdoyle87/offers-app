@@ -11,9 +11,6 @@ I have a love-hate relationship with take-home tests. It's nice not having someo
 
 ## Things That Can Be Changed or Updated
 
-- **React Front End Integration**:
-    - The front end could be replaced entirely with a React front end, or React could be used to replace certain functionalities. This would enhance the interactivity and modularity of the application.
-
 - **Dockerization for Easy Setup**:
     - The app could be dockerized to simplify setup, making it as easy as running a single command. For those without a local Rails setup, a simple script is available: `/bin/bash -c "$(curl -fsSL https://rails.new/✨)"`. This script guides through the entire setup process in just a few minutes.
 
