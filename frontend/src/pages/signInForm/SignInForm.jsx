@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
-import AuthManager from "../helpers/AuthManager.js";
+import AuthManager from "../../helpers/AuthManager.js";
 
 function SignInForm() {
     const [username, setUsername] = useState('');
@@ -31,7 +31,7 @@ function SignInForm() {
             onError: (error) => {
                 // Handle error
                 console.error('Error during sign in:', error);
-                toast.error(`Error during sign up: ${error.response?.data?.error_description[0] || 'Unknown error'}`, {
+                toast.error(`Error during sign up: ${error.response?.data?.errors[0] || 'Unknown error'}`, {
                     position: "top-center",
                     autoClose: 3000,
                     hideProgressBar: false,

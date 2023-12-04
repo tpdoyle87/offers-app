@@ -4,7 +4,7 @@ import axios from 'axios';
 import snakecaseKeys from "snakecase-keys";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import AuthManager from "../helpers/AuthManager.js";
+import AuthManager from "../../helpers/AuthManager.js";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ function SignUpForm() {
       onError: (error) => {
         // Handle error
         console.error('Error during sign up:', error);
-        toast.error(`Error during sign up: ${error.response?.data?.error_description[0] || 'Unknown error'}`, {
+        toast.error(`Error during sign up: ${error.response?.data?.errors?.full_messages[0] || 'Unknown error'}`, {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -130,7 +130,7 @@ function SignUpForm() {
                       <option value="" disabled>Select Gender</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
-                      <option value="Other">Other</option>
+                      <option value="">Other</option>
                   </select>
               </div>
               <div>

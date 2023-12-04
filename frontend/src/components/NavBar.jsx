@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQueryClient } from 'react-query';
 import {Link, useNavigate} from 'react-router-dom';
-import AuthManager from '../../helpers/AuthManager';
+import AuthManager from '../helpers/AuthManager.js';
 import {useMutation} from "react-query";
 import axios from "axios";
 import {toast} from "react-toastify";
