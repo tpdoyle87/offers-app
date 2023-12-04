@@ -6,9 +6,10 @@ import { ToastContainer } from 'react-toastify';
 import SignUpForm from './pages/SignUpForm';
 import SignInForm from './pages/SignInForm';
 import OfferCards from './pages/Offers/Offers';
+import NavBar from "./components/navbar/NavBar.jsx";
+
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import NavBar from "./components/navbar/NavBar.jsx";
 
 
 function Offers() {

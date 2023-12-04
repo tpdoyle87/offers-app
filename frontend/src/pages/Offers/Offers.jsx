@@ -5,11 +5,13 @@ import './Offers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import AuthManager from "../../helpers/AuthManager.js";
+import {useNavigate} from "react-router-dom";
 
 
 const fetchOffers = async () => {
     const tokens = AuthManager.getTokens()
     const headers = {
+        'Access-Control-Allow-Origin': '*',
         'access-token': tokens.accessToken,
         'client': tokens.client,
         'uid': tokens.uid
@@ -22,21 +24,35 @@ const fetchOffers = async () => {
 
 function OfferCards() {
     const { data, isLoading, error } = useQuery('offers', fetchOffers);
+    const navigate = useNavigate();
 
-
-    if (isLoading) return <div><FontAwesomeIcon icon={faSpinner} spin /></div>;
+    if (isLoading) return <div className="container m-auto mt-24"><FontAwesomeIcon icon={faSpinner} spin /></div>;
     if (error) return <div>An error occurred: {error.message}</div>;
 
 
     return (
-        <div className="offers-container">
-            { data['offers'].map((offer, index) => (
-                <div className="card" key={index}>
-                    <div className="card-body">
-                        <p className="card-text">{offer.description}</p>
-                    </div>
-                </div>
-            ))}
+        <div className="container  mt-24">
+            <div>
+                <p>Total Offers: {data['offers'].length}</p>
+            </div>
+            <div className="mt-5 grid grid-cols-3 gap-4">
+                {
+                    data['offers'] && data['offers'].length > 0 ? (
+                        data['offers'].map((offer, index) => (
+                            <div className="card" key={index}>
+                                <div className="card-body">
+                                    <p className="card-text">{offer.description}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="text-center">
+                            <p>Sorry, no offers currently. Check back soon!</p>
+                        </div>
+                    )
+                }
+            </div>
+
         </div>
     );
 }

@@ -27,7 +27,7 @@ function SignUpForm() {
       const headers = {
           'Access-Control-Allow-Origin': '*',
       }
-    return axios.post('http://localhost:5000/auth', snakecaseKeys(data), {headers});
+    return axios.post('http://localhost:5000/auth', snakecaseKeys(data), { headers });
   });
 
   const handleSubmit = (e) => {
@@ -59,56 +59,114 @@ function SignUpForm() {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
-        <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={userData.username}
-            onChange={handleChange}
-        />
-        <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={userData.firstName}
-            onChange={handleChange}
-        />
-        <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={userData.lastName}
-            onChange={handleChange}
-        />
-        <input
-            type="date"
-            name="birthdate"
-            value={userData.birthdate}
-            onChange={handleChange}
-        />
-        <select name="gender" value={userData.gender} onChange={handleChange}>
-          <option value="" disabled>Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="">Other</option>
-        </select>
-        <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={userData.email}
-            onChange={handleChange}
-        />
-        <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={userData.password}
-            onChange={handleChange}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className='container w-1/2 m-auto mt-24'>
+          <form onSubmit={handleSubmit} className="bg-gray-200 p-4 rounded-lg space-y-5">
+              <div>
+                  <label htmlFor="username" className="block text-sm font-medium text-gray-700 text-start">
+                      Username
+                  </label>
+                  <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="Username"
+                      value={userData.username}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 text-start">
+                      First Name
+                  </label>
+                  <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      placeholder="First Name"
+                      value={userData.firstName}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <div>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 text-start">
+                      Last Name
+                  </label>
+                  <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={userData.lastName}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <div>
+                  <label htmlFor="birthdate" className="block text-sm font-medium text-gray-700 text-start">
+                      Birthdate
+                  </label>
+                  <input
+                      type="date"
+                      id="birthdate"
+                      name="birthdate"
+                      value={userData.birthdate}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <div>
+                  <label htmlFor="gender" className="block text-sm font-medium text-gray-700 text-start">
+                      Gender
+                  </label>
+                  <select
+                      id="gender"
+                      name="gender"
+                      value={userData.gender}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                      <option value="" disabled>Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                  </select>
+              </div>
+              <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 text-start">
+                      Email
+                  </label>
+                  <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Email"
+                      value={userData.email}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <div>
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 text-start">
+                      Password
+                  </label>
+                  <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Password"
+                      value={userData.password}
+                      onChange={handleChange}
+                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+              </div>
+              <button type="submit" className="w-full bg-black text-white px-4 py-2 rounded hover:bg-gray-700">
+                  Sign Up
+              </button>
+          </form>
+      </div>
+
   );
 }
 

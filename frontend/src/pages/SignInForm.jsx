@@ -45,22 +45,43 @@ function SignInForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            />
-            <button type="submit">Sign In</button>
-            <button type="button" onClick={() => { setUsername(''); setPassword(''); }}>Clear</button>
-        </form>
+        <div className="w-1/2 m-auto container mt-24">
+            <form onSubmit={handleSubmit} className="bg-gray-200 p-4 rounded-lg space-y-5 w-1/2 m-auto">
+                <div className="flex flex-col">
+                    <label htmlFor="username" className="block text-sm font-medium text-gray-700 mr-4 text-start">
+                        Username:
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Username"
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                </div>
+                <div className="flex flex-col">
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mr-4 text-start">
+                        Password:
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                </div>
+                <button type="submit" className="w-full bg-black text-white px-4 py-2 rounded hover:bg-gray-700">
+                    Sign In
+                </button>
+                <button type="button" onClick={() => { setUsername(''); setPassword(''); }} className="w-full bg-black text-white px-4 py-2 rounded hover:bg-gray-700">
+                    Clear
+                </button>
+            </form>
+        </div>
+
     );
 }
 
