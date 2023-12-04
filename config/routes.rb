@@ -6,9 +6,7 @@ Rails.application.routes.draw do
     get '/offers', to: 'offers#index'
   end
 
-  mount_devise_token_auth_for 'User', at: 'auth', defaults: {format: 'json'}, controllers: {
-    registrations: 'custom_registrations'
-  }
+  mount_devise_token_auth_for 'User', at: 'auth', defaults: {format: 'json'}
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
