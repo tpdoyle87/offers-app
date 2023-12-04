@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:single-stop-tony/devise_token_auth.git
+  revision: 777e2697a6b9e2e5dd436fb8e27665e1dba60276
+  specs:
+    devise_token_auth (1.2.2)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 7.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -197,6 +206,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.8)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -353,6 +364,7 @@ DEPENDENCIES
   database_cleaner-active_record
   debug
   devise
+  devise_token_auth!
   dotenv-rails
   factory_bot_rails
   faker
@@ -362,6 +374,7 @@ DEPENDENCIES
   pg (~> 1.1)
   pry-rails
   puma (>= 5.0)
+  rack-cors
   rails (~> 7.1.2)
   redis (>= 4.0.1)
   rspec-rails (~> 5.0.0)

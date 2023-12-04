@@ -11,9 +11,12 @@
 #  first_name             :string
 #  gender                 :string
 #  last_name              :string
+#  provider               :string           default("username"), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  tokens                 :json
+#  uid                    :string           default(""), not null
 #  username               :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -27,10 +30,12 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :validatable, :trackable and :omniauthable
+  # Include default devise modules.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
+
+  include DeviseTokenAuth::Concerns::User
+
 
   validates :first_name, :last_name, :birthdate, :username, :email, presence: true
   validates :username, uniqueness: true

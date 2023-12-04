@@ -11,9 +11,12 @@
 #  first_name             :string
 #  gender                 :string
 #  last_name              :string
+#  provider               :string           default("username"), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  tokens                 :json
+#  uid                    :string           default(""), not null
 #  username               :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

@@ -6,11 +6,13 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'devise_token_auth', git: 'git@github.com:single-stop-tony/devise_token_auth.git'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'pry-rails'
 gem 'puma', '>= 5.0'
+gem 'rack-cors'
 gem 'rails', '~> 7.1.2'
 gem 'redis', '>= 4.0.1'
 gem 'sprockets-rails'

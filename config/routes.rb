@@ -2,10 +2,12 @@
 
 Rails.application.routes.draw do
   root "home#index"
-  get '/offers', to: 'offers#index'
+  namespace :api do
+    get '/offers', to: 'offers#index'
+  end
 
-  get 'home/index'
-  devise_for :users
+  mount_devise_token_auth_for 'User', at: 'auth', defaults: {format: 'json'}
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
