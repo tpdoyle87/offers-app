@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import './Offers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import AuthManager from "../../helpers/AuthManager.js";
-import {useNavigate} from "react-router-dom";
 
 
 const fetchOffers = async () => {
@@ -17,14 +16,12 @@ const fetchOffers = async () => {
         'uid': tokens.uid
     }
     const { data } = await axios.get('http://localhost:5000/api/offers', { headers } );
-    console.log(data['offers'])
 
     return data;
 };
 
 function OfferCards() {
     const { data, isLoading, error } = useQuery('offers', fetchOffers);
-    const navigate = useNavigate();
 
     if (isLoading) return <div className="container m-auto mt-24"><FontAwesomeIcon icon={faSpinner} spin /></div>;
     if (error) return <div>An error occurred: {error.message}</div>;

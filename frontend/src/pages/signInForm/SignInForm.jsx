@@ -25,12 +25,10 @@ function SignInForm() {
                     client: response.headers['client'],
                     uid: response.headers['uid']
                 });
-                console.log('User signed in:', response.data);
                 navigate('/offers'); // Pass the data back up if needed
             },
             onError: (error) => {
                 // Handle error
-                console.error('Error during sign in:', error);
                 toast.error(`Error during sign up: ${error.response?.data?.errors[0] || 'Unknown error'}`, {
                     position: "top-center",
                     autoClose: 3000,

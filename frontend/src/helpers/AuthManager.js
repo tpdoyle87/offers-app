@@ -4,7 +4,7 @@ import axios from 'axios';
 class AuthManager {
 
     static isAuthenticated = () => {
-        const token = localStorage.getItem('accessToken'); // or however you store your token
+        const token = localStorage.getItem('accessToken');
         return !!token; // returns true if token exists, false otherwise
     };
     static setTokens(tokens) {

@@ -44,7 +44,6 @@ function SignUpForm() {
       },
       onError: (error) => {
         // Handle error
-        console.error('Error during sign up:', error);
         toast.error(`Error during sign up: ${error.response?.data?.errors?.full_messages[0] || 'Unknown error'}`, {
           position: "top-center",
           autoClose: 3000,
